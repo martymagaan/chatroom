@@ -1,0 +1,74 @@
+Listening on port 3001
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User connected
+User disconnected [ 'deathcol', 'culverin' ]
+User removed [ 'culverin' ]
+User disconnected []
+User connected
+User connected
+User disconnected [ 'DeathCol_X', 'culverin' ]
+User removed [ 'culverin' ]
+User connected
+User disconnected [ 'culverin', 'deathcol' ]
+User removed [ 'deathcol' ]
+User connected
+User disconnected [ 'deathcol', 'culverin' ]
+User removed [ 'deathcol' ]
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User connected
+User disconnected [ 'DeathCol', 'culverin' ]
+User removed [ 'culverin' ]
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User connected
+User disconnected [ 'DeathColX', 'culverin' ]
+User removed [ 'culverin' ]
+User disconnected []
+User connected
+User connected
+User disconnected [ 'DeathCol_X', 'culverin' ]
+User removed [ 'culverin' ]
+User connected
+User disconnected [ 'culverin', 'DeathCol_X' ]
+User removed [ 'DeathCol_X' ]
+User connected
+User disconnected [ 'DeathCol_X', 'DeathCol_X(2)' ]
+User removed [ 'DeathCol_X' ]
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
+User connected
+User disconnected []
