@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import socketIOClient from 'socket.io-client'
+import socketIOClient from 'socket.io-client';
 import './index.css';
 
 const server = 'http://projects.martymagaan.com:3001';
@@ -18,6 +18,8 @@ class Chatroom extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.viewUserList = this.viewUserList.bind(this);
+    this.hideUserList = this.hideUserList.bind(this);
     this.shiftIsDown = false;
     this.newMessage = null;
 
@@ -106,6 +108,24 @@ class Chatroom extends React.Component {
       this.shiftIsDown = false;
   }
 
+  viewUserList() {
+    const userList = document.getElementById('user-list-container');
+    userList.style.visibility = 'visible';
+    const viewButton = document.getElementById('view-user-list');
+    viewButton.style.display = 'none';
+    const hideButton = document.getElementById('hide-user-list');
+    hideButton.style.display = 'inline-block';
+  }
+
+  hideUserList() {
+    const userList = document.getElementById('user-list-container');
+    userList.style.visibility = 'hidden';
+    const hideButton = document.getElementById('hide-user-list');
+    hideButton.style.display = 'none';
+    const viewButton = document.getElementById('view-user-list');
+    viewButton.style.display = 'inline-block';
+  }
+
   render() {
     const messages = this.state.messages;
     const chatPosts = messages.map((chatPost, id) => {
@@ -160,6 +180,12 @@ class Chatroom extends React.Component {
             onKeyUp={this.handleKeyUp}
           />
           <input id ="chat-button" type="submit" value="Chat" />
+          <button id="view-user-list" onClick={this.viewUserList}>
+            View User List
+          </button>
+          <button id="hide-user-list" onClick={this.hideUserList}>
+            Hide User List
+          </button>
         </form>
       </div>
     );
@@ -193,20 +219,24 @@ class App extends React.Component {
   render() {
     if (!this.state.username) {
       return (
-        <form id="username-form" onSubmit={this.handleSubmit}>
-          <input
-            id="username-input"
-            type="text"
-            placeholder="Enter username"
-            autoComplete="off"
-            onChange={this.handleChange}
-          />
-          <input
-            id="username-submit"
-            type="submit"
-            value="Enter"
-          />
-        </form>
+        <div id="create-user-screen">
+          <img id="logo" src="img/chatroom.svg" alt="Chatroom logo" />
+          <form id="username-form" onSubmit={this.handleSubmit}>
+            <input
+              id="username-input"
+              type="text"
+              placeholder="Enter username"
+              autoComplete="off"
+              onChange={this.handleChange}
+            />
+            <br />
+            <input
+              id="username-submit"
+              type="submit"
+              value="Enter"
+            />
+          </form>
+        </div>
       );
     }
     else
