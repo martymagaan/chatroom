@@ -59,10 +59,6 @@ class Chatroom extends React.Component {
       const messages = this.state.messages.concat(newMessage);
       this.setState({messages: messages});
     });
-
-    socket.on('check users', () => {
-      socket.emit('check users', this.user);
-    });
   }
 
   componentDidMount() {

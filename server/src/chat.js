@@ -7,10 +7,12 @@ let userCheck = [];
 let userCheckTimeout;
 
 io.on('connection', (socket) => {
-  console.log('User connected');
+  let user;
+
   socket.emit('load users', JSON.stringify(users));
 
   socket.on('user entered', (username) => {
+    user = username;
     users.push(username);
     const userData = {
       newUser: username,
@@ -25,26 +27,12 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     if (users.length === 1) users = [];
-    else io.emit('check users');
+    else
+      for (let i = 0; i < users.length; i++)
+        if (users[i] === user) users.splice(i, 1);
+    const userData = {user: user, users: users};
+    io.emit('user left', JSON.stringify(userData));
     console.log('User disconnected', users);
-  });
-
-  socket.on('check users', (username) => {
-    if (!userCheck.includes(username))
-      userCheck.push(username)
-
-    clearTimeout(userCheckTimeout);
-    userCheckTimeout = setTimeout(() => {
-      users.forEach((user) => {
-        if (!userCheck.includes(user)) {
-          users.splice(users.indexOf(user), 1);
-          const userData = {user: user, users: users};
-          io.emit('user left', JSON.stringify(userData));
-          console.log('User removed', users);
-        }
-      });
-      userCheck = [];
-    }, 500);
   });
 });
 
